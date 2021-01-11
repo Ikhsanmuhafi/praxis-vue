@@ -1,0 +1,75 @@
+<template>
+      <v-app>
+        <v-container>
+            <v-row class="justify-center">
+                <v-col>
+                    <v-card tile elevation="1" class="mt-10">
+                        <v-parallax
+                          src="https://images.yourstory.com/cs/wordpress/2018/03/coding-job.png">
+                        <v-card-title> 
+                            <h3>Login Admin</h3>
+                        </v-card-title>
+                        <v-form ref="form">
+                            <v-alert color="error" type="error" :value="error.username">
+                                Username tidak sesuai!
+                            </v-alert>
+                             <v-alert color="error" type="error" :value="error.password">
+                                Password tidak sesuai!
+                            </v-alert>
+                             <v-alert color="error" type="error" :value="error.userpass">
+                                Username dan password tidak sesuai!
+                            </v-alert>
+                            <v-card-text>
+                                <v-text-field color="white" label="Username" v-model="admin.username"/>
+                                <v-text-field color="white" label="Password"
+                                :type="showPassword ? 'text' : 'password'" :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="handleClick" v-model="admin.password"/>
+                            </v-card-text>
+                             <v-btn
+                            color="white"
+                             @click="handleSubmit"> Masuk </v-btn>
+                        </v-form>
+                        </v-parallax>
+                    </v-card>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-app>
+</template>
+
+<script>
+export default {
+    data: () => ({
+        admin: {
+            username : '',
+            password : ''
+        },
+        showPassword: false,
+        error: {
+            username: false,
+            password: false,
+            userpass: false
+        }
+    }),
+    methods: {
+        handleClick() {
+            this.showPassword = !this.showPassword
+        },
+        handleSubmit() {
+                const adminUsername = this.$store.state.admin.username
+                const adminPassword = this.$store.state.admin.password
+                if(this.admin.username !== adminUsername && this.admin.password !== adminPassword) {
+                    this.error.userpass = true
+                } else if(this.admin.username !== adminUsername) {
+                    this.error.username = true
+                } else if(this.admin.password !== adminPassword) {
+                    this.error.password = true
+                } else {
+                    this.$store.commit("setAuthentication", true)
+                    this.$store.dispatch("login", this.admin)
+                    alert('Login success!')
+                    this.$router.push('/admin')
+                }
+            }
+        }
+    }
+</script>
