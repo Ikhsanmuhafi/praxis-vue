@@ -1,5 +1,5 @@
 <template>
-  <div class="data">
+  <div>
     <v-container>
       <h1>Data Pendaftaran Frontend</h1>
       <v-list-item v-for="user in filterUsers" :key="user.name">
@@ -17,6 +17,12 @@
 <script>
 export default {
   computed: {
+    // users(){
+    //   return this.$store.state.users.filter((user) => {
+    //     return user.program === 'frontend'
+    //   })
+    // },
+
      filterUsers() {
        return this.$store.state.users.filter((user) => {
          if (user.isApproved === false) {

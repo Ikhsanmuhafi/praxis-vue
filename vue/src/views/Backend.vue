@@ -1,5 +1,5 @@
 <template>
-  <div class="data">
+  <div>
     <v-container>
       <h1>Data Pendaftaran Backend</h1>
       <v-list-item v-for="user in filterUsers" :key="user.name">

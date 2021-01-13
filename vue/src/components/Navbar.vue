@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <v-navigation-drawer
+        <v-navigation-drawer color="blue"
         dense
         v-model="drawer" app>
             <v-list-item>
@@ -30,7 +30,7 @@
             <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
             <v-btn
             color="white"
-            link to="/home">
+            link to="/">
             <v-icon>mdi-home</v-icon>
             </v-btn>
 
@@ -41,7 +41,7 @@
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn 
-            color="blue"
+            color="light-blue lighten-1"
             dark
             link to="/login">login</v-btn>
         </v-app-bar>

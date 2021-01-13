@@ -23,7 +23,7 @@
                                 ></v-select>
                             </v-card-text>
                             <v-card-actions>
-                                <v-btn color="white" @click="handleSubmit">Submit</v-btn>
+                                <v-btn color="blue lighten-1" dark @click="handleSubmit">Submit</v-btn>
                             </v-card-actions>
                         </v-form>
                         </v-parallax>

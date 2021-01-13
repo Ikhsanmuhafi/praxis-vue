@@ -25,7 +25,7 @@
                                 :type="showPassword ? 'text' : 'password'" :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="handleClick" v-model="admin.password"/>
                             </v-card-text>
                              <v-btn
-                            color="white"
+                            color="blue lighten-1" dark
                              @click="handleSubmit"> Masuk </v-btn>
                         </v-form>
                         </v-parallax>
@@ -40,8 +40,8 @@
 export default {
     data: () => ({
         admin: {
-            username : '',
-            password : ''
+            username : 'ikhsan',
+            password : '2020'
         },
         showPassword: false,
         error: {
