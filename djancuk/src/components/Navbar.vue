@@ -10,13 +10,12 @@
       <template v-slot:activator="{ on, attrs }">
         <v-spacer></v-spacer>
         <v-btn
-        elevation="24"
           color="white"
           text
           v-bind="attrs"
           v-on="on"
           icon
-        > <v-icon>mdi-account</v-icon> 
+        > <v-icon>mdi-account</v-icon>
         </v-btn>
       </template>
      <v-row justify="center">

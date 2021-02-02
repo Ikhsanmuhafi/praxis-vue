@@ -14,17 +14,28 @@
                       prepend-icon="mdi-account"
                     ></v-text-field>
                     <v-text-field
-                      type="password"
-                      label="Password"
-                      prepend-icon="mdi-key"
+                       v-model="password"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show1 ? 'text' : 'password'"
+            label="Password"
+            prepend-icon="mdi-key"
+            @click:append="show1 = !show1"
                     ></v-text-field>
                   </v-col>
                 </v-row>
                 <v-col>
-                  <v-btn elevation="2" color="primary" to="/masuk" text> login </v-btn>
+                  <v-btn elevation="2" color="primary" to="/masuk" text>
+                    login
+                  </v-btn>
                   <v-dialog v-model="dialog" persistent max-width="600px">
                     <template v-slot:activator="{ on, attrs }">
-                      <v-btn elevation="2" color="green" text v-bind="attrs" v-on="on">
+                      <v-btn
+                        elevation="2"
+                        color="green"
+                        text
+                        v-bind="attrs"
+                        v-on="on"
+                      >
                         Daftar
                       </v-btn>
                     </template>
@@ -133,15 +144,19 @@
 
 
 <script>
-export default {
-  data: () => ({
-    // reveal: false,
-    dialog: false,
-  }),
-  login(){
-    
+  export default {
+    data () {
+      return {
+        show1: false,
+        password: '',
+        rules: {
+          required: value => !!value || 'Required.',
+          // min: v => v.length >= 8 || 'Min 8 characters',
+          // emailMatch: () => (`The email and password you entered don't match`),
+        },
+      }
+    },
   }
-};
 </script>
 
 <style>
