@@ -30,18 +30,20 @@
         </v-toolbar-title>
       </v-container>
       <v-spacer></v-spacer>
-        <!-- <v-menu offset-y>
-          <v-btn class="" icon slot="activator">
+      <template>
+        <!-- <v-menu offset-y> -->
+          <!-- <v-btn class="" icon slot="activator">
             <v-icon>mdi-chevron-down</v-icon>
             <v-icon>mdi-account-box</v-icon>
           </v-btn>
           <v-list>
             <v-list-tile-title>
-              <v-icon left>{{ menu.icon }}</v-icon>
-              <span class="grey--text">{{ menu.name }}</span>
+              <v-icon left></v-icon>
+              <span class="grey--text"></span>
             </v-list-tile-title>
           </v-list>
         </v-menu> -->
+      </template>
       <v-btn rounded text color="red" @click="handleLogout"> Logout</v-btn>
       <v-btn to="/murid" color="black" icon> <v-icon>mdi-account</v-icon> </v-btn>
     </v-app-bar>
@@ -78,8 +80,10 @@ export default {
       var yakin = confirm("Apakah kamu yakin ingin keluar");
       if (yakin) {
         window.location = "/";
+      localStorage.removeItem('token')
+
       } else {
-        document.write = "http://localhost:8080/#/admin";
+        document.write = "http://localhost:8080/#/jadwal";
       }
     },
   },

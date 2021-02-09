@@ -34,7 +34,8 @@
             <v-divider></v-divider>
           </tbody>
         </template>
-      </v-simple-table>
+      </v-simple-table>{{token}}
+
 
       <v-card-actions> </v-card-actions>
     </v-card>
@@ -73,6 +74,16 @@ export default {
       ],
     };
   },
+  computed:{
+    token(){
+      return localStorage.getItem("token")
+
+    }
+    
+    
+
+  }
+
 };
 </script>
 

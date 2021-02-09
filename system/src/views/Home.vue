@@ -15,6 +15,7 @@
                     label="NIS/NIK"
                     single-line
                     outlined
+                    v-model="username"
                   ></v-text-field>
                   <v-text-field
                     label="Password"
@@ -23,6 +24,7 @@
                     :type="show1 ? 'text' : 'password'"
                     single-line
                     outlined
+              
                     @click:append="show1 = !show1"
                   ></v-text-field>
                 </v-col>
@@ -32,9 +34,11 @@
                   rounded
                   elevation="2"
                   color="#54a9f6"
-                  to="/murid"
+                
                   class="ma-2 white--text"
                   block
+                  @click="login"
+                
                 >
                   login
                 </v-btn>
@@ -59,6 +63,7 @@
 
 
 <script>
+import axios from "axios"
 // import Navbarr from "../components/Navbarr.vue"
 export default {
   // components:{
@@ -66,6 +71,8 @@ export default {
   // },
   data() {
     return {
+      username:'',
+      data:'',
       show1: false,
       password: "",
       rules: {
@@ -73,6 +80,22 @@ export default {
       },
     };
   },
+  methods:{
+    async login(){
+      try{
+        const res= await axios.post('http://192.168.1.33:8080/sekolah/login',{username:this.username, password:this.password})
+        this.data=res.data
+        localStorage.setItem('token',this.data.accessToken);
+        this.$router.push('/jadwal')
+        console.log(this.data)
+
+      }catch(error){
+      console.log(error)
+      }
+    }
+    
+    
+  }
 };
 </script>
 
