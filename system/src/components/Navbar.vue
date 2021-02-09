@@ -25,17 +25,25 @@
 
     <v-app-bar app>
       <v-container>
-      <v-toolbar-title class="justify-center">
-        <strong>Sistem Informasi academy Sekolah</strong>
-      </v-toolbar-title>
+        <v-toolbar-title class="justify-center">
+          <strong>Sistem Informasi academy Sekolah</strong>
+        </v-toolbar-title>
       </v-container>
       <v-spacer></v-spacer>
-      <v-btn rounded text color="red" @click="handleLogout"> Logout </v-btn>
-              <v-btn
-          color="black"
-          icon
-        > <v-icon>mdi-account</v-icon>
-        </v-btn>
+        <!-- <v-menu offset-y>
+          <v-btn class="" icon slot="activator">
+            <v-icon>mdi-chevron-down</v-icon>
+            <v-icon>mdi-account-box</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile-title>
+              <v-icon left>{{ menu.icon }}</v-icon>
+              <span class="grey--text">{{ menu.name }}</span>
+            </v-list-tile-title>
+          </v-list>
+        </v-menu> -->
+      <v-btn rounded text color="red" @click="handleLogout"> Logout</v-btn>
+      <v-btn to="/murid" color="black" icon> <v-icon>mdi-account</v-icon> </v-btn>
     </v-app-bar>
   </nav>
 </template>
@@ -51,6 +59,17 @@ export default {
         // { title: "Profil", icon: "mdi-account", route: "/murid" },
         { title: "Jadwal", icon: "mdi-book", route: "/jadwal" },
         { title: "Kelas", icon: "mdi-door", route: "/kelas" },
+      ],
+            menu: [
+        {
+          icon: "account_circle",
+          name: "Administrator",
+          route: "administrator",
+        },
+        { icon: "flight_takeoff",
+         name: "Logout", 
+         route: "logout" 
+        },
       ],
     };
   },
