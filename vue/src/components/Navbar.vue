@@ -2,6 +2,7 @@
     <nav>
         <v-navigation-drawer color="blue"
         dense
+        temporary
         v-model="drawer" app>
             <v-list-item>
             <v-list-item-content>
@@ -29,19 +30,22 @@
         <v-app-bar app>
             <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
             <v-btn
+            class="ma-2"
             color="white"
             link to="/">
             <v-icon>mdi-home</v-icon>
             </v-btn>
 
             <v-btn
-            color="white"
+            class="ma-2"
+            color="light-blue lighten-1"
+            dark
             link to="/register">
             <v-icon>mdi-account-plus</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn 
-            color="light-blue lighten-1"
+            color="green"
             dark
             link to="/login">login</v-btn>
         </v-app-bar>
